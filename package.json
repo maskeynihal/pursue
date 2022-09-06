@@ -1,0 +1,11 @@
+{
+  "name": "@maskeynihal/pursue",
+  "version": "1.0.0",
+  "description": "Handling jobs and queue",
+  "main": "index.js",
+  "author": "maskeynihal",
+  "license": "MIT",
+  "dependencies": {
+    "@aws-sdk/client-sqs": "^3.163.0"
+  }
+}
