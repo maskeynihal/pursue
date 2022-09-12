@@ -1,8 +1,14 @@
-import { add } from "./services/queue";
-import Handler from "./classes/Handler";
-import EventHandlerMapper from "./classes/EventHandlerMapper";
+import Queue from "./Queue";
+import Handler from "./Handler";
+import EventHandlerMapper from "./EventHandlerMapper";
 
-class Jobs<IHandler, IEventHandlerMapper> {
+import type { HandlerFunction } from "../types/common";
+class Jobs<
+  IHandler extends {
+    [key: string]: HandlerFunction;
+  },
+  IEventHandlerMapper extends { [key: string]: Array<keyof IHandler> }
+> {
   private _handlers: Handler<IHandler>;
   private _eventHandlerMapper: EventHandlerMapper<IEventHandlerMapper>;
 
@@ -26,29 +32,31 @@ class Jobs<IHandler, IEventHandlerMapper> {
     return this._eventHandlerMapper.keys;
   }
 
-  public getHandlerFunctions(event: string) {
+  public getHandlerFunctions(event: keyof IEventHandlerMapper) {
     return this._eventHandlerMapper.eventHandlerMapper[event];
   }
 
-  public event(eventName: string, parameters: any) {
+  public async event(eventName: keyof IEventHandlerMapper, parameters: any) {
     const functions = this.getHandlerFunctions(eventName);
 
     if (!functions) {
-      throw new Error("No listeners found for event: " + eventName);
+      throw new Error(
+        `No handler function found for event: '${String(eventName)}'`
+      );
     }
 
-    return Promise.all(
+    return await Promise.all(
       functions.map((handlerKey) => {
-        return add({ scope: handlerKey as string, data: parameters });
+        return Queue.add({ scope: handlerKey as string, data: parameters });
       })
     );
   }
 
-  public dispatch(handlerKey: string, parameters: any = {}) {
+  public dispatch(handlerKey: keyof IHandler, parameters: any = {}) {
     const handler = this._handlers.handlers[handlerKey];
 
     if (!handler) {
-      throw new Error("No handler found for event: " + handlerKey);
+      throw new Error(`No function found for handler: '${String(handlerKey)}`);
     }
 
     return handler(parameters);

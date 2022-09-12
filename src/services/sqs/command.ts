@@ -6,7 +6,11 @@ interface MessageCommand {
   label?: string;
 }
 
-const generateMessageCommand = ({ scope, data, label }: MessageCommand) => {
+export const generateSqsMessageCommand = ({
+  scope,
+  data,
+  label,
+}: MessageCommand) => {
   return {
     MessageAttributes: {
       scope: {
@@ -26,5 +30,3 @@ const generateMessageCommand = ({ scope, data, label }: MessageCommand) => {
     QueueUrl: config.sqs.queueUrl,
   };
 };
-
-export default generateMessageCommand;

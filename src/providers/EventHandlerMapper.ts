@@ -1,6 +1,6 @@
 import type { StringMap } from "../types/common";
 
-class EventHandlerMapper<T> {
+class EventHandlerMapper<T extends object> {
   _eventHandlerMapper: T;
 
   constructor(eventHandlerMapper: T) {

@@ -1,6 +1,10 @@
-import type { StringMap } from "../types/common";
+import type { StringMap, HandlerFunction } from "../types/common";
 
-class Handler<T> {
+class Handler<
+  T extends {
+    [key: string]: HandlerFunction;
+  }
+> {
   private _handlers: T;
 
   constructor(handlers: T) {

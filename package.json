@@ -2,10 +2,19 @@
   "name": "@maskeynihal/pursue",
   "version": "1.0.0",
   "description": "Handling jobs and queue",
-  "main": "index.js",
+  "main": "./dist/index.js",
   "author": "maskeynihal",
   "license": "MIT",
+  "scripts": {
+    "build": "rimraf dist && tsc",
+    "build:watch": "rimraf dist && tsc -w"
+  },
   "dependencies": {
     "@aws-sdk/client-sqs": "^3.163.0"
+  },
+  "devDependencies": {
+    "@types/node": "^18.7.15",
+    "rimraf": "^3.0.2",
+    "typescript": "^4.8.2"
   }
 }
