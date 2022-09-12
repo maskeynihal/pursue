@@ -12,7 +12,8 @@
     "lint:fix": "eslint --fix '*/**/*.{js,ts,tsx}'",
     "prettier": "prettier -c src/**/*.{js,ts,tsx,scss,css,md}",
     "prettier:fix": "prettier -c src/**/*.{js,ts,tsx,scss,css,md} --write",
-    "prepare": "husky install"
+    "prepare": "husky install",
+    "prepublishOnly": "yarn build"
   },
   "dependencies": {
     "@aws-sdk/client-sqs": "^3.163.0"
