@@ -36,7 +36,7 @@ class Jobs<
     return this._eventHandlerMapper.eventHandlerMapper[event];
   }
 
-  public async event(eventName: keyof IEventHandlerMapper, parameters: any) {
+  public async trigger(eventName: keyof IEventHandlerMapper, parameters: any) {
     const functions = this.getHandlerFunctions(eventName);
 
     if (!functions) {
