@@ -1,0 +1,16 @@
+name: 'Release package'
+on:
+  release:
+    types: [published]
+jobs:
+  build-and-publish-package:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - uses: actions/setup-node@v1
+        with:
+          node-version: 16
+      - run: yarn install
+      - run: yarn publish
+        env:
+          NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
