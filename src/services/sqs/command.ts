@@ -1,4 +1,4 @@
-import config from "../../config/jobs.config";
+import config from '../../config/jobs.config';
 
 interface MessageCommand {
   scope: string;
@@ -9,24 +9,24 @@ interface MessageCommand {
 export const generateSqsMessageCommand = ({
   scope,
   data,
-  label,
+  label
 }: MessageCommand) => {
   return {
     MessageAttributes: {
       scope: {
-        DataType: "String",
-        StringValue: scope,
+        DataType: 'String',
+        StringValue: scope
       },
       data: {
-        DataType: "String",
-        StringValue: JSON.stringify(data),
+        DataType: 'String',
+        StringValue: JSON.stringify(data)
       },
       destination: {
-        DataType: "String",
-        StringValue: config.callbackUrl,
-      },
+        DataType: 'String',
+        StringValue: config.callbackUrl
+      }
     },
     MessageBody: label || scope,
-    QueueUrl: config.sqs.queueUrl,
+    QueueUrl: config.sqs.queueUrl
   };
 };

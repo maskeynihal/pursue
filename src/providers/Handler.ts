@@ -1,4 +1,4 @@
-import type { StringMap, HandlerFunction } from "../types/common";
+import type { StringMap, HandlerFunction } from '../types/common';
 
 class Handler<
   T extends {

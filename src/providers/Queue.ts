@@ -1,7 +1,7 @@
-import { SendMessageCommand } from "@aws-sdk/client-sqs";
+import { SendMessageCommand } from '@aws-sdk/client-sqs';
 
-import client from "../services/sqs/client";
-import { generateSqsMessageCommand } from "../services/sqs/command";
+import client from '../services/sqs/client';
+import { generateSqsMessageCommand } from '../services/sqs/command';
 
 interface AddToQueueParams {
   scope: string;

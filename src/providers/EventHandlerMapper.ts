@@ -1,4 +1,4 @@
-import type { StringMap } from "../types/common";
+import type { StringMap } from '../types/common';
 
 class EventHandlerMapper<T extends object> {
   _eventHandlerMapper: T;

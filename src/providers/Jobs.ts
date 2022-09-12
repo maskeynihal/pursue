@@ -1,8 +1,8 @@
-import Queue from "./Queue";
-import Handler from "./Handler";
-import EventHandlerMapper from "./EventHandlerMapper";
+import Queue from './Queue';
+import Handler from './Handler';
+import EventHandlerMapper from './EventHandlerMapper';
 
-import type { HandlerFunction } from "../types/common";
+import type { HandlerFunction } from '../types/common';
 class Jobs<
   IHandler extends {
     [key: string]: HandlerFunction;

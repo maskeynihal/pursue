@@ -1,3 +1,3 @@
-import type { HandlerFunction } from "./common";
+import type { HandlerFunction } from './common';
 
 export type { HandlerFunction };
