@@ -16,7 +16,7 @@
     "prepublishOnly": "yarn build"
   },
   "dependencies": {
-    "@aws-sdk/client-sqs": "^3.315.0"
+    "@aws-sdk/client-sqs": "^3.620.1"
   },
   "devDependencies": {
     "@types/node": "^18.7.15",
