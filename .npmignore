@@ -1,0 +1,6 @@
+.github
+.husky
+.prettierignore
+.prettier.js
+.npmignore
+src
